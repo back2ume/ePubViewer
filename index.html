@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="description" content="ePubViewer is an powerful, modern, and easy-to-use web app for reading ebooks.">
+    <meta name="description" content="ePubViewer是强大的、现代的、易于使用的epub网页阅读器">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="tab search" data-tab="search">
                         <div class="search-bar">
-                            <input type="text" autocomplete="off" placeholder="Search book..." class="search-box">
+                            <input type="text" autocomplete="off" placeholder="在书中搜索" class="search-box">
                             <button class="search-button">
                                 <i class="icon material-icons-outlined">search</i>
                             </button>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="tab settings" data-tab="settings">
                         <div class="setting">
-                            <div class="setting-label">Themes</div>
+                            <div class="setting-label">主题</div>
                             <div class="setting-content theme chips" data-chips="theme">
                                 <div class="theme chip" style="background: #fff; color: #000;" data-default="true" data-value="#fff;#000">A</div>
                                 <div class="theme chip" style="background: #000; color: #fff;" data-value="#000;#fff">A</div>
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Font</div>
+                            <div class="setting-label">字体</div>
                             <div class="setting-content font chips" data-chips="font">
                                 <div class="font chip" style="font-family: 'Arial', Arimo, Liberation Sans, sans-serif;" data-value="'Arial', Arimo, Liberation Sans, sans-serif">Arial</div>
                                 <div class="font chip" style="font-family: 'Lato', sans-serif;" data-value="'Lato', sans-serif">Lato</div>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Font Size</div>
+                            <div class="setting-label">字体大小</div>
                             <div class="setting-content font-size chips" data-chips="font-size">
                                 <div class="size chip" style="font-size: 8pt" data-value="8pt">8</div>
                                 <div class="size chip" style="font-size: 9pt" data-value="9pt">9</div>
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Line Spacing</div>
+                            <div class="setting-label">行间距</div>
                             <div class="setting-content line-spacing chips" data-chips="line-spacing">
                                 <div class="size chip" data-value="1">1</div>
                                 <div class="size chip" data-value="1.2">1.2</div>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Margin</div>
+                            <div class="setting-label">页面内距</div>
                             <div class="setting-content margin chips" data-chips="margin">
                                 <div class="size chip" data-value="0">0</div>
                                 <div class="size chip" data-value="1px">1px</div>
@@ -129,38 +129,39 @@
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Progress Display</div>
+                            <div class="setting-label">阅读进度显示方式</div>
                             <div class="setting-content progress chips" data-chips="progress">
-                                <div class="chip" data-value="location" data-default="true">Location</div>
-                                <div class="chip" data-value="percentage" data-default="true">Percentage</div>
-                                <div class="chip" data-value="chapter" data-default="true">Chapter</div>
-                                <div class="chip" data-value="bar" data-default="true">Bar</div>
-                                <div class="chip" data-value="none" data-default="true">None</div>
+                                <div class="chip" data-value="location" data-default="true">页码</div><!--location-->
+                                <div class="chip" data-value="percentage" data-default="true">百分比</div>
+                                <div class="chip" data-value="chapter" data-default="true">章节</div>
+                                <div class="chip" data-value="bar" data-default="true">进度条</div>
+                                <div class="chip" data-value="none" data-default="true">不显示</div>
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Fullscreen</div>
+                            <div class="setting-label">全屏显示</div>
                             <div class="setting-content">
-                                <a href="javascript:ePubViewer.doFullscreen();">Fullscreen</a>
+                                <a href="javascript:ePubViewer.doFullscreen();">切换全屏显示</a>
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">Reset</div>
+                            <div class="setting-label">重置</div>
                             <div class="setting-content">
-                                <a href="javascript:void(0);" onclick="if(confirm('Are you sure?')){localStorage.clear();window.location.reload();}">Reset All</a>
+                                <a href="javascript:void(0);" onclick="if(confirm('Are you sure?')){localStorage.clear();window.location.reload();}">重置所有设置</a>
                             </div>
                         </div>
                         <div class="setting">
-                            <div class="setting-label">About</div>
+                            <div class="setting-label">关于</div>
                             <div class="setting-content">
                                 ePubViewer v3.1.0
                                 <br /> Copyright 2019
-                                <a href="https://pgaskin.net">Patrick Gaskin</a>
+                                <a href="https://pgaskin.net">原作者 Patrick Gaskin</a>
                                 <br />
-                                <a href="https://github.com/pgaskin/ePubViewer">Code</a> |
-                                <a href="https://github.com/pgaskin/ePubViewer/issues">Report an issue</a>
+                                此应用基于源代码进行汉化，无增减功能
+                                <a href="https://github.com/pgaskin/ePubViewer">源代码</a> |
+                                <a href="https://github.com/pgaskin/ePubViewer/issues">报告问题</a>
                                 <br />
-                                <br /> This app requires Microsoft Edge 15+, Mozilla Firefox 50+, Chrome 50+, or Safari 10+.
+                                <br /> 此应用需要 Microsoft Edge 15+, Mozilla Firefox 50+, Chrome 50+ 或 Safari 10+
                             </div>
                         </div>
                     </div>
@@ -195,9 +196,8 @@
                 <div class="empty">
                     <div class="app-name">ePubViewer</div>
                     <div class="message">
-                        Unknown error. If this message does not disappear in a few seconds, try using a different browser (Chrome or Firefox), and
-                        if the issue still persists,
-                        <a href="https://github.com/pgaskin/ePubViewer">report it here</a>.
+                        发生了未知的错误。如果这条消息过一会儿仍未消失，请尝试换用其他浏览器（Chrome 或 Firefox）。如果问题依然存在，你可以
+                        <a href="https://github.com/pgaskin/ePubViewer">报告这个问题</a>.
                     </div>
                 </div>
             </div>
@@ -224,7 +224,7 @@
             userAgent = userAgent || navigator.userAgent;
             return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1;
         }
-        if (isIE()) alert("ePubViewer does not support Internet Explorer. Please use Chrome or Firefox.");
+        if (isIE()) alert("ePubViewer 不支持 Internet Explorer，请使用 Chrome 或 Firefox");
     </script>
 
     <script>
@@ -252,27 +252,8 @@
     <script src="libs/jszip.min.js"></script>
     <script src="libs/epub.js"></script>
 
-    <script src="https://cdn.ravenjs.com/3.26.2/raven.min.js" crossorigin="anonymous"></script>
-    <script>
-        Raven.config('https://2ca31038f72145f787447a29b085007b@sentry.io/1239248', {
-            autoBreadcrumbs: {
-                console: true,
-                dom: true
-            }
-        }).install();
-    </script>
-
     <script src="script.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66226417-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-66226417-1');
-    </script>
 </body>
 
 </html>

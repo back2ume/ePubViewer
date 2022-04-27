@@ -4826,7 +4826,7 @@ var Contents = function () {
 			this.selectionEndTimeout = setTimeout(function () {
 				var selection = this.window.getSelection();
 				this.triggerSelectedEvent(selection);
-			}.bind(this), 250);
+			}.bind(this), 0);
 		}
 
 		/**

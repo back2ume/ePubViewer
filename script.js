@@ -14,8 +14,8 @@ window.onerror = function (msg, url, line, column, err) {
     if (msg.indexOf("Permission denied") > -1) return;
     if (msg.indexOf("Object expected") > -1 && url.indexOf("epub") > -1) return;
     document.querySelector(".app .error").classList.remove("hidden");
-    document.querySelector(".app .error .error-title").innerHTML = "Error";
-    document.querySelector(".app .error .error-description").innerHTML = "Please try reloading the page or using a different browser (Chrome or Firefox), and if the error still persists, <a href=\"https://github.com/pgaskin/ePubViewer/issues\">report an issue</a>.";
+    document.querySelector(".app .error .error-title").innerHTML = "发生错误";
+    document.querySelector(".app .error .error-description").innerHTML = "请尝试重新加载或换用其它浏览器（Chrome 或 Firefox）。如果问题依然存在，你可以<a href=\"https://github.com/pgaskin/ePubViewer/issues\">报告这个问题</a>.";
     document.querySelector(".app .error .error-info").innerHTML = msg;
     document.querySelector(".app .error .error-dump").innerHTML = JSON.stringify({
         error: err.toString(),
@@ -62,17 +62,17 @@ let App = function (el) {
         this.qs(".bar .loc").style.cursor = "pointer";
         this.qs(".bar .loc").addEventListener("click", event => {
             try {
-                let answer = prompt(`Location to go to (up to ${this.state.book.locations.length()})?`, this.state.rendition.currentLocation().start.location);
+                let answer = prompt(`你要去哪一页（最高到${this.state.book.locations.length()}）?`, this.state.rendition.currentLocation().start.location);
                 if (!answer) return;
                 answer = answer.trim();
                 if (answer == "") return;
 
                 let parsed = parseInt(answer, 10);
-                if (isNaN(parsed) || parsed < 0) throw new Error("Invalid location: not a positive integer");
-                if (parsed > this.state.book.locations.length()) throw new Error("Invalid location");
+                if (isNaN(parsed) || parsed < 0) throw new Error("无效位置: 不是一个正整数");
+                if (parsed > this.state.book.locations.length()) throw new Error("无效位置");
 
                 let cfi = this.state.book.locations.cfiFromLocation(parsed);
-                if (cfi === -1) throw new Error("Invalid location");
+                if (cfi === -1) throw new Error("无效位置");
 
                 this.state.rendition.display(cfi);
             } catch (err) {
@@ -188,7 +188,7 @@ App.prototype.doOpenBook = function () {
                     encoding: "binary"
                 });
             } else {
-                this.fatal("invalid file", "not an epub book");
+                this.fatal("无效文件", "不是epub图书文件");
             }
         }, false);
         if (fi.files[0]) {
@@ -236,7 +236,7 @@ App.prototype.doReset = function () {
     this.qs(".info .series-index").innerHTML = "";
     this.qs(".info .author").innerHTML = "";
     this.qs(".info .description").innerHTML = "";
-    this.qs(".book").innerHTML = '<div class="empty-wrapper"><div class="empty"><div class="app-name">ePubViewer</div><div class="message"><a href="javascript:ePubViewer.doOpenBook();" class="big-button">Open a Book</a></div></div></div>';
+    this.qs(".book").innerHTML = '<div class="empty-wrapper"><div class="empty"><div class="app-name">ePubViewer</div><div class="message"><a href="javascript:ePubViewer.doOpenBook();" class="big-button">打开图书</a></div></div></div>';
     this.qs(".sidebar-button").classList.add("hidden");
     this.qs(".bar button.prev").classList.add("hidden");
     this.qs(".bar button.next").classList.add("hidden");
@@ -541,7 +541,7 @@ App.prototype.onRenditionRelocatedUpdateIndicators = function (event) {
         if (this.getChipActive("progress") == "none") {
             stxt = "";
         } else if (this.getChipActive("progress") == "location" && event.start.location > 0) {
-            stxt = `Loc ${event.start.location}/${this.state.book.locations.length()}`
+            stxt = `${event.start.location}/${this.state.book.locations.length()}`
         } else if (this.getChipActive("progress") == "chapter") {
             let navItem = this.getNavItem(event, false) || this.getNavItem(event, true);
             stxt = navItem ? navItem.label.trim() : (event.start.percentage > 0 && event.start.percentage < 1) ? `${Math.round(event.start.percentage * 100)}%` : "";
@@ -610,8 +610,8 @@ App.prototype.doDictionary = function (word) {
     lmeaningsEl.innerHTML = "Loading";
 
     fetch(`https://dict.api.pgaskin.net/word/${encodeURIComponent(word)}`).then(resp => {
-        if (resp.status >= 500) throw new Error(`Dictionary not available`);
-        if (resp.status == 404) throw new Error(`Word not found`);
+        if (resp.status >= 500) throw new Error(`词典当前不可用`);
+        if (resp.status == 404) throw new Error(`没有找到单词`);
         return resp.json();
     }).then(obj => {
         if (obj.status == "error") throw new Error(`ApiError: ${obj.result}`);
