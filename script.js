@@ -425,13 +425,15 @@ App.prototype.applyTheme = function () {
         m: this.getChipActive("margin")
     };
 
+    /**bug(已修复):切换行间距无效
+     * 修复方法:将line-height样式从body元素移到p元素上
+    **/
     let rules = {
         "body": {
             "background": theme.bg,
             "color": theme.fg,
             "font-family": theme.ff != "" ? `${theme.ff} !important` : "!invalid-hack",
             "font-size": theme.fs != "" ? `${theme.fs} !important` : "!invalid-hack",
-            "line-height": `${theme.lh} !important`,
             "text-align": `${theme.ta} !important`,
             "padding-top": theme.m,
             "padding-bottom": theme.m
@@ -439,6 +441,7 @@ App.prototype.applyTheme = function () {
         "p": {
             "font-family": theme.ff != "" ? `${theme.ff} !important` : "!invalid-hack",
             "font-size": theme.fs != "" ? `${theme.fs} !important` : "!invalid-hack",
+            "line-height": `${theme.lh} !important`,
         },
         "a": {
             "color": "inherit !important",

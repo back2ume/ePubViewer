@@ -4823,6 +4823,9 @@ var Contents = function () {
 			if (this.selectionEndTimeout) {
 				clearTimeout(this.selectionEndTimeout);
 			}
+			/**bug(已修复):切换页面时崩溃
+			 * 修复方法:将setTimeout的延时从250改为0
+			**/
 			this.selectionEndTimeout = setTimeout(function () {
 				var selection = this.window.getSelection();
 				this.triggerSelectedEvent(selection);
