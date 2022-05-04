@@ -203,7 +203,7 @@ App.prototype.fatal = function (msg, err, usersFault) {
     console.error(msg, err);
     document.querySelector(".app .error").classList.remove("hidden");
     document.querySelector(".app .error .error-title").innerHTML = "Error";
-    document.querySelector(".app .error .error-description").innerHTML = usersFault ? "" : "Please try reloading the page or using a different browser, and if the error still persists, <a href=\"https://github.com/pgaskin/ePubViewer/issues\">report an issue</a>.";
+    document.querySelector(".app .error .error-description").innerHTML = usersFault ? "" : "请尝试重新加载或换用其它浏览器如果问题依然存在，你可以<a href='https://github.com/pgaskin/ePubViewer'>报告这个问题</a>。";
     document.querySelector(".app .error .error-info").innerHTML = msg + ": " + err.toString();
     document.querySelector(".app .error .error-dump").innerHTML = JSON.stringify({
         error: err.toString(),
